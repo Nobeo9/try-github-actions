@@ -1,0 +1,41 @@
+name: "月次集計依頼"
+description: "ライセンス・コスト集計を実行します"
+title: "[集計依頼] {{ year_month }} のデータ"
+labels: ["run-aggregation"]
+body:
+  - type: input
+    id: year_month
+    attributes:
+      label: 対象月 (YYYY-MM)
+      description: 例: 2025-01
+      placeholder: "2025-01"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: price_mode
+    attributes:
+      label: ライセンス単価
+      options:
+        - "自動判定（マスタに従う）"
+        - "固定バージョンを指定する"
+    validations:
+      required: true
+
+  - type: input
+    id: price_version
+    attributes:
+      label: 固定バージョン名（必要な場合）
+      description: 例: "2024-単価改定版"
+      placeholder: "任意"
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: 何か補足があれば
+      placeholder: "例: 1月分のraw CSVは2025/02/05にアップロード済みです"
+    validations:
+      required: false
